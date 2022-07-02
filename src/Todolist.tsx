@@ -9,7 +9,7 @@ type TaskType = {
 type PropsType = {
   title: string;
   tasks: TaskType[];
-  removeTask: (argFn: number) => void;
+  removeTask: (elID: number) => void;
 };
 
 export function Todolist(props: PropsType) {
