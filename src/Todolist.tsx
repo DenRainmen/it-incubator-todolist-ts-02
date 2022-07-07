@@ -18,18 +18,20 @@ type PropsType = {
 export function Todolist(props: PropsType) {
   return (
     <div>
-      <h3>{props.title}</h3>
-      <div>
-        <input />
-        <button>+</button>
-      </div>
+     
+      <i className="title">{`${props.title} ?`}</i>
+      <div className="card-container">
+        <div >
+          <input type="text" />
+          <button>+</button>
+        </div>  
       <ul>
         {props.tasks.map((el) => {
           return (
             <li key={el.id}>
               <input
                 type="button"
-                value="Delete"
+                value="X"
                 onClick={() => props.removeTask(el.id)}
               />
               <input type="checkbox" checked={el.isDone} />
@@ -42,6 +44,7 @@ export function Todolist(props: PropsType) {
         <button onClick={() => props.changeFilter("all")}>All</button>
         <button onClick={() => props.changeFilter("active")}>Active</button>
         <button onClick={() => props.changeFilter("completed")}>Completed</button>
+      </div>
       </div>
     </div>
   );
