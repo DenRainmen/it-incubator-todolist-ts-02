@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 
 
@@ -19,6 +19,36 @@ type TaskType = {
 
 
 export function Todolist(props: PROPS) {
+
+
+    const [btnName, setFilterValue] = useState("All")
+
+    //todo Создали новую фунцию, принимающую в параметры то , что передаётся из кнопок компоненты Todolist ...... и я нихрена не понял как это работает ?!?!?!?
+
+    const changeFilter = (btnName: string) => {
+        setFilterValue(btnName)
+        alert(btnName)
+    }
+
+
+    let filteredTasks = tasks;
+
+
+    switch (btnName) {
+        case "Completed":
+            filteredTasks = tasks.filter((el) => el.isDone === true);
+            break;
+        case "Active":
+            filteredTasks = tasks.filter((el) => el.isDone === false);
+            break;
+        default:
+            filteredTasks = tasks;
+    }
+
+
+
+
+
   return (
     <div>
      
