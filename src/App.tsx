@@ -50,9 +50,9 @@ export const App = () => {
         <div className="App">
             <Todolist
                 title="What to learn"
-                tasks={filteredTasks}
+                tasks={tasks}
                 removeTask={removeTask}
-                changeFilter={changeFilter}
+
             />
         </div>
     );

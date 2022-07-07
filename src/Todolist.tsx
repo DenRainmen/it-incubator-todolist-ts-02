@@ -1,12 +1,12 @@
-import React, {useState} from "react";
-
+import React, { useState } from "react";
+/* import { FilterValuesType } from "./App"; */
 
 
 type PROPS = {
   title: string;
   tasks: TaskType[];
   removeTask: (elID: number) => void;
-  changeFilter: (btnName: string) => void;
+  // changeFilter: (btnName: string) => void;
 };
 
 type TaskType = {
@@ -21,6 +21,7 @@ type TaskType = {
 export function Todolist(props: PROPS) {
 
 
+
     const [btnName, setFilterValue] = useState("All")
 
     //todo Создали новую фунцию, принимающую в параметры то , что передаётся из кнопок компоненты Todolist ...... и я нихрена не понял как это работает ?!?!?!?
@@ -31,21 +32,21 @@ export function Todolist(props: PROPS) {
     }
 
 
-    let filteredTasks = tasks;
+    let filteredTasks = props.tasks;
+
 
 
     switch (btnName) {
         case "Completed":
-            filteredTasks = tasks.filter((el) => el.isDone === true);
+            filteredTasks = props.tasks.filter((el) => el.isDone === true);
+
             break;
         case "Active":
-            filteredTasks = tasks.filter((el) => el.isDone === false);
+            filteredTasks = props.tasks.filter((el) => el.isDone === false);
             break;
         default:
-            filteredTasks = tasks;
+            filteredTasks = props.tasks;
     }
-
-
 
 
 
@@ -59,7 +60,7 @@ export function Todolist(props: PROPS) {
           <button>+</button>
         </div>  
       <ul>
-        {props.tasks.map((el) => {
+        {filteredTasks.map((el) => {
           return (
             <li key={el.id}>
               <input
@@ -74,9 +75,9 @@ export function Todolist(props: PROPS) {
         })}
       </ul>
       <div>
-        <button onClick={() => props.changeFilter("All")}>All</button>
-        <button onClick={() => props.changeFilter("Active")}>Active</button>
-        <button onClick={() => props.changeFilter("Completed")}>Completed</button>
+        <button onClick={() => changeFilter("All")}>All</button>
+        <button onClick={() => changeFilter("Active")}>Active</button>
+        <button onClick={() => changeFilter("Completed")}>Completed</button>
       </div>
       </div>
     </div>
